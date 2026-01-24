@@ -64,6 +64,7 @@ const c = {
   yellow: '\x1b[33m',
   red: '\x1b[31m',
   green: '\x1b[32m',
+  white: '\x1b[37m',
   bold: '\x1b[1m',
   reset: '\x1b[0m'
 };
@@ -89,9 +90,9 @@ ${c.yellow}Commands:${c.reset}
 ${c.yellow}Config:${c.reset} .claude/llm-anti-cheating.local.md
 ${c.yellow}Current:${c.reset} mode=${mode}, level=${level}`;
 } else if (level === 'strict') {
-  modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} [mode=${mode}, level=${level}]\n${padding}All violations require immediate stop and user approval.`;
+  modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.white}All violations require immediate stop and user approval.${c.reset}`;
 } else {
-  modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} [mode=${mode}, level=${level}]\n${padding}Minor violations allowed with proper labeling.`;
+  modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.white}Minor violations allowed with proper labeling.${c.reset}`;
 }
 
 // Read policy content
