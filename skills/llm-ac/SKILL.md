@@ -76,8 +76,9 @@ Full policy is injected at SessionStart. Reminders appear on each prompt.
 
 ### No Arguments (`/llm-ac`)
 
-1. Display the "Policy Summary" section above
-2. Briefly mention current settings
+1. **MUST** start output with: "🚨 **LLM Anti-Cheating v1.0.0**"
+2. Display the "Policy Summary" section
+3. Briefly mention current settings
 
 ### With Arguments
 
@@ -110,9 +111,10 @@ level: {strict|balanced}
 
 #### `/llm-ac status`
 
-1. Read `.claude/llm-anti-cheating.local.md` file
-2. If not exists: "Using defaults (mode: auto, level: balanced)"
-3. If exists: Display current mode and level values
+1. **MUST** start output with: "🚨 **LLM Anti-Cheating v1.0.0** - Status"
+2. Read `.claude/llm-anti-cheating.local.md` file
+3. If not exists: "Using defaults (mode: auto, level: balanced)"
+4. If exists: Display current mode and level values
 
 ---
 

@@ -32,8 +32,7 @@ try {
     if (modeMatch) mode = modeMatch[1];
     if (levelMatch) level = levelMatch[1];
   } else {
-    // First run - create default config file
-    isFirstRun = true;
+    // First run - try to create default config file
     const defaultConfig = `# LLM Anti-Cheating Settings
 
 ---
@@ -41,11 +40,18 @@ mode: auto
 level: balanced
 ---
 `;
-    fs.mkdirSync(path.dirname(configFile), { recursive: true });
-    fs.writeFileSync(configFile, defaultConfig);
+    try {
+      fs.mkdirSync(path.dirname(configFile), { recursive: true });
+      fs.writeFileSync(configFile, defaultConfig);
+      isFirstRun = true;  // Only set true if file creation succeeds
+    } catch (writeErr) {
+      // File creation failed (permission issue, etc.) - still show first run message
+      isFirstRun = true;
+    }
   }
 } catch (err) {
-  // Use defaults on error
+  // Config read failed - treat as first run
+  isFirstRun = true;
 }
 
 // Exit silently if manual mode (no policy injection)
