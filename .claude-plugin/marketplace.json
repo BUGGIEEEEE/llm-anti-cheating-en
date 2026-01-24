@@ -12,7 +12,7 @@
       "name": "llm-anti-cheating-en",
       "source": "./",
       "description": "Work transparency and anti-cheating policy plugin with scope labels and checklists",
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "llm-anti-cheating-en",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Claude Work Transparency Policy - Enforces scope labeling for all operations",
   "author": {
     "name": "buggie"

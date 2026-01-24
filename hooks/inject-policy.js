@@ -64,7 +64,7 @@ const c = {
   yellow: '\x1b[33m',
   red: '\x1b[31m',
   green: '\x1b[32m',
-  white: '\x1b[37m',
+  white: '\x1b[97m',  // Bright white (97) instead of normal white (37)
   bold: '\x1b[1m',
   reset: '\x1b[0m'
 };
