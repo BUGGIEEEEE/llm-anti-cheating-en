@@ -6,6 +6,15 @@ const path = require('path');
 const pluginRoot = process.env.CLAUDE_PLUGIN_ROOT || __dirname.replace(/\/hooks$/, '');
 const projectDir = process.env.CLAUDE_PROJECT_DIR || '.';
 
+// Read plugin version from plugin.json
+let version = '1.0.0';
+try {
+  const pluginJson = JSON.parse(fs.readFileSync(path.join(pluginRoot, '.claude-plugin', 'plugin.json'), 'utf8'));
+  version = pluginJson.version || version;
+} catch (err) {
+  // Use default version on error
+}
+
 // Config file path
 const configFile = path.join(projectDir, '.claude', 'llm-anti-cheating.local.md');
 
@@ -61,7 +70,7 @@ const padding = '                                                   ';  // 51 sp
 
 if (isFirstRun) {
   // First run welcome message
-  modeIndicator = `${c.green}${c.bold}🎉 LLM Anti-Cheating Plugin Installed!${c.reset}
+  modeIndicator = `${c.green}${c.bold}🎉 LLM Anti-Cheating Plugin v${version} Installed!${c.reset}
 
 ${c.yellow}Commands:${c.reset}
   /llm-ac          - Show policy reminder
