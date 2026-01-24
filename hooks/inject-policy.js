@@ -64,6 +64,7 @@ const c = {
   yellow: '\x1b[33m',
   red: '\x1b[31m',
   green: '\x1b[32m',
+  blue: '\x1b[34m',
   white: '\x1b[97m',  // Bright white (97) instead of normal white (37)
   bold: '\x1b[1m',
   reset: '\x1b[0m'
@@ -80,21 +81,21 @@ if (isFirstRun) {
   modeIndicator = `${c.green}${c.bold}🎉 LLM Anti-Cheating Plugin v${version} Installed!${c.reset}
 
 ${c.reset}${c.yellow}Commands:${c.reset}
-  ${c.reset}${c.white}${c.bold}/llm-ac${c.reset}          - Show policy reminder
-  ${c.reset}${c.white}${c.bold}/llm-ac status${c.reset}   - Check current settings
-  ${c.reset}${c.white}${c.bold}/llm-ac strict${c.reset}   - Enable strict mode
-  ${c.reset}${c.white}${c.bold}/llm-ac balanced${c.reset} - Enable balanced mode
-  ${c.reset}${c.white}${c.bold}/llm-ac off${c.reset}      - Disable auto-injection
-  ${c.reset}${c.white}${c.bold}/llm-ac on${c.reset}       - Enable auto-injection
+  ${c.reset}${c.blue}${c.bold}/llm-ac${c.reset}          - Show policy reminder
+  ${c.reset}${c.blue}${c.bold}/llm-ac status${c.reset}   - Check current settings
+  ${c.reset}${c.blue}${c.bold}/llm-ac strict${c.reset}   - Enable strict mode
+  ${c.reset}${c.blue}${c.bold}/llm-ac balanced${c.reset} - Enable balanced mode
+  ${c.reset}${c.blue}${c.bold}/llm-ac off${c.reset}      - Disable auto-injection
+  ${c.reset}${c.blue}${c.bold}/llm-ac on${c.reset}       - Enable auto-injection
 
 ${c.reset}${c.yellow}Config:${c.reset} .claude/llm-anti-cheating.local.md
 ${level === 'strict'
-    ? `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}`
-    : `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}`}`;
+    ? `${c.reset}${c.yellow}${c.bold}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.blue}[mode=${mode}, level=${level}]${c.reset}`
+    : `${c.reset}${c.yellow}${c.bold}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.blue}[mode=${mode}, level=${level}]${c.reset}`}`;
 } else if (level === 'strict') {
-  modeIndicator = `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.reset}${c.white}${c.bold}All violations require immediate stop and user approval.${c.reset}`;
+  modeIndicator = `${c.reset}${c.yellow}${c.bold}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.blue}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.reset}${c.blue}${c.bold}All violations require immediate stop and user approval.${c.reset}`;
 } else {
-  modeIndicator = `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.reset}${c.white}${c.bold}Minor violations allowed with proper labeling.${c.reset}`;
+  modeIndicator = `${c.reset}${c.yellow}${c.bold}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.blue}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.reset}${c.blue}${c.bold}Minor violations allowed with proper labeling.${c.reset}`;
 }
 
 // Read policy content
