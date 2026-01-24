@@ -1,0 +1,10 @@
+{
+  "name": "llm-anti-cheating-en",
+  "version": "1.0.0",
+  "description": "Claude Work Transparency Policy - Enforces scope labeling for all operations",
+  "author": {
+    "name": "buggie"
+  },
+  "license": "MIT",
+  "keywords": ["transparency", "anti-cheating", "policy", "labeling"]
+}

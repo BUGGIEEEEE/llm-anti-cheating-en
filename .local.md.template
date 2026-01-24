@@ -1,0 +1,19 @@
+# LLM Anti-Cheating Configuration
+
+Per-project configuration file.
+Copy this file to `.claude/llm-anti-cheating.local.md` to use.
+
+---
+mode: auto
+level: balanced
+---
+
+## Configuration Options
+
+### mode
+- `auto` (default): Auto-inject policy at SessionStart + reminders on each prompt
+- `manual`: Disable auto-injection, call via `/llm-ac` only
+
+### level
+- `balanced` (default): Minor violations allowed with proper labeling
+- `strict`: All violations require immediate stop and user approval
