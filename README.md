@@ -14,9 +14,17 @@ Enforces scope labels and checklists to prevent rationalization, omission, and c
 
 ## Installation
 
-```bash
-claude plugin add github:BUGGIEEEEE/llm-anti-cheating-en
+**Step 1: Add marketplace**
 ```
+/plugin marketplace add BUGGIEEEEE/llm-anti-cheating-en
+```
+
+**Step 2: Install plugin**
+```
+/plugin install llm-anti-cheating-en@llm-anti-cheating
+```
+
+**Step 3: Restart Claude Code**
 
 Or manually:
 
