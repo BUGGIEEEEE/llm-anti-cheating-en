@@ -1,7 +1,10 @@
 ---
 name: llm-ac
 description: Work transparency and anti-cheating policy reminder. Triggers on "label check", "anti-cheating", "transparency policy", "llm-ac", "cheating prevention", "work policy".
+version: 1.0.0
 ---
+
+# 🚨 LLM Anti-Cheating v1.0.0
 
 ## Quick Reference
 
