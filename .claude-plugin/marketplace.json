@@ -1,0 +1,18 @@
+{
+  "name": "llm-anti-cheating",
+  "owner": {
+    "name": "BUGGIEEEEE",
+    "email": ""
+  },
+  "metadata": {
+    "description": "Claude Code plugins for work transparency and anti-cheating policy"
+  },
+  "plugins": [
+    {
+      "name": "llm-anti-cheating-en",
+      "source": ".",
+      "description": "Work transparency and anti-cheating policy plugin with scope labels and checklists",
+      "version": "1.0.0"
+    }
+  ]
+}
