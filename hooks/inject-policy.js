@@ -79,20 +79,22 @@ if (isFirstRun) {
   // First run welcome message
   modeIndicator = `${c.green}${c.bold}🎉 LLM Anti-Cheating Plugin v${version} Installed!${c.reset}
 
-${c.yellow}Commands:${c.reset}
-  /llm-ac          - Show policy reminder
-  /llm-ac status   - Check current settings
-  /llm-ac strict   - Enable strict mode
-  /llm-ac balanced - Enable balanced mode
-  /llm-ac off      - Disable auto-injection
-  /llm-ac on       - Enable auto-injection
+${c.reset}${c.yellow}Commands:${c.reset}
+  ${c.reset}${c.white}${c.bold}/llm-ac${c.reset}          - Show policy reminder
+  ${c.reset}${c.white}${c.bold}/llm-ac status${c.reset}   - Check current settings
+  ${c.reset}${c.white}${c.bold}/llm-ac strict${c.reset}   - Enable strict mode
+  ${c.reset}${c.white}${c.bold}/llm-ac balanced${c.reset} - Enable balanced mode
+  ${c.reset}${c.white}${c.bold}/llm-ac off${c.reset}      - Disable auto-injection
+  ${c.reset}${c.white}${c.bold}/llm-ac on${c.reset}       - Enable auto-injection
 
-${c.yellow}Config:${c.reset} .claude/llm-anti-cheating.local.md
-${c.yellow}Current:${c.reset} mode=${mode}, level=${level}`;
+${c.reset}${c.yellow}Config:${c.reset} .claude/llm-anti-cheating.local.md
+${level === 'strict'
+    ? `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}`
+    : `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}`}`;
 } else if (level === 'strict') {
-  modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.white}All violations require immediate stop and user approval.${c.reset}`;
+  modeIndicator = `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.reset}${c.white}${c.bold}All violations require immediate stop and user approval.${c.reset}`;
 } else {
-  modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.white}Minor violations allowed with proper labeling.${c.reset}`;
+  modeIndicator = `${c.reset}${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} ${c.white}[mode=${mode}, level=${level}]${c.reset}\n${padding}${c.reset}${c.white}${c.bold}Minor violations allowed with proper labeling.${c.reset}`;
 }
 
 // Read policy content
