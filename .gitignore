@@ -1,1 +1,4 @@
 *.backup
+
+# Per-project settings (user-specific, should not be committed)
+.claude/*.local.md

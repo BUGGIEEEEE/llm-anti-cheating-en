@@ -128,7 +128,7 @@ llm-anti-cheating-en/
 ├── skills/
 │   └── llm-ac/
 │       └── SKILL.md
-├── .local.md.template
+├── llm-anti-cheating.local.md.template
 ├── README.md
 └── LICENSE
 ```
