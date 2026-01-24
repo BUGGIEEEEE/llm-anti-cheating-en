@@ -12,8 +12,9 @@ const configFile = path.join(projectDir, '.claude', 'llm-anti-cheating.local.md'
 // Defaults
 let mode = 'auto';
 let level = 'balanced';
+let isFirstRun = false;
 
-// Read config if exists
+// Read config if exists, create if not
 try {
   if (fs.existsSync(configFile)) {
     const content = fs.readFileSync(configFile, 'utf8');
@@ -21,6 +22,18 @@ try {
     const levelMatch = content.match(/^level:\s*(\w+)/m);
     if (modeMatch) mode = modeMatch[1];
     if (levelMatch) level = levelMatch[1];
+  } else {
+    // First run - create default config file
+    isFirstRun = true;
+    const defaultConfig = `# LLM Anti-Cheating Settings
+
+---
+mode: auto
+level: balanced
+---
+`;
+    fs.mkdirSync(path.dirname(configFile), { recursive: true });
+    fs.writeFileSync(configFile, defaultConfig);
   }
 } catch (err) {
   // Use defaults on error
@@ -42,9 +55,25 @@ const c = {
 
 // Build mode indicator with current settings
 let modeIndicator;
+let systemMessage;
 // Padding: 51 spaces to align with STRICT/BALANCED in Claude Code UI
 const padding = '                                                   ';  // 51 spaces
-if (level === 'strict') {
+
+if (isFirstRun) {
+  // First run welcome message
+  modeIndicator = `${c.green}${c.bold}🎉 LLM Anti-Cheating Plugin Installed!${c.reset}
+
+${c.yellow}Commands:${c.reset}
+  /llm-ac          - Show policy reminder
+  /llm-ac status   - Check current settings
+  /llm-ac strict   - Enable strict mode
+  /llm-ac balanced - Enable balanced mode
+  /llm-ac off      - Disable auto-injection
+  /llm-ac on       - Enable auto-injection
+
+${c.yellow}Config:${c.reset} .claude/llm-anti-cheating.local.md
+${c.yellow}Current:${c.reset} mode=${mode}, level=${level}`;
+} else if (level === 'strict') {
   modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.red}${c.bold}🔒 STRICT${c.reset} [mode=${mode}, level=${level}]\n${padding}All violations require immediate stop and user approval.`;
 } else {
   modeIndicator = `${c.yellow}🚨 LLM-ANTI-CHEATING${c.reset} ${c.green}${c.bold}⚡ BALANCED${c.reset} [mode=${mode}, level=${level}]\n${padding}Minor violations allowed with proper labeling.`;
