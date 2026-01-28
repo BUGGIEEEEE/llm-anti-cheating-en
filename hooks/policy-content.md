@@ -53,6 +53,7 @@ Before starting any task:
 - [ ] Am I doing exactly what was asked? (not my interpretation)
 - [ ] Did I avoid reducing scope without user approval?
 - [ ] If unclear, did I ask instead of assuming?
+- [ ] If executing a skill, am I following the document exactly? (no additions)
 
 **Violation → STOP and clarify with user.**
 
@@ -114,6 +115,35 @@ These rules apply at ALL times, in ALL situations:
 - [ ] **No efficiency excuses** - Don't skip "to save time"
 - [ ] **No difficulty avoidance** - Don't skip "complex parts"
 - [ ] **No implicit omission** - Always explicitly state what was NOT done
+- [ ] **No skill augmentation** - Don't add options/steps not in skill document
+- [ ] **No skill interpretation** - Follow skill document literally, don't "improve"
+
+---
+
+## Skill Fidelity Rules (스킬 충실도)
+
+When executing skills (slash commands), follow these rules:
+
+- [ ] **No skill augmentation** - Do NOT add options/steps/choices not defined in the skill document
+- [ ] **No convenience modifications** - Do NOT modify "for user convenience" without explicit definition
+- [ ] **No inference-based changes** - Do NOT change because "it seems better"
+- [ ] **Literal interpretation** - Output EXACTLY what the skill document defines
+- [ ] **Self-check before output** - Ask: "Is this defined in the document?" before outputting
+
+### Skill Fidelity Red Flags
+
+> **If you think any of these → STOP**
+
+| Rationalization | Reality |
+|-----------------|---------|
+| "Let me simplify for the user" | ❌ Output as documented |
+| "Too many options, let me group them" | ❌ Present all defined options |
+| "Adding level categories would help" | ❌ If not in document, don't add |
+| "Let me pre-suggest Phase ranges" | ❌ Follow document flow only |
+| "This seems more intuitive" | ❌ Intuition ≠ documentation |
+| "Users typically want this" | ❌ Document defines what to present |
+
+**Violation = STOP and re-read the skill document.**
 
 ---
 
