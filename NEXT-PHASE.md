@@ -247,15 +247,28 @@ get_bash_commands() {
 ### Opus 지적: 안전장치
 
 ```bash
-# 모든 claude -p 호출에 적용
+# Read-only 시나리오 (T1, T5, T9): 안전한 기본값
 timeout 180 claude -p \
-  --permission-mode bypassPermissions \
-  --max-budget-usd 1.00 \
-  --cwd "$tmpdir" \
+  --permission-mode dontAsk \
+  --allowedTools "Read" \
+  --disallowedTools "WebFetch WebSearch Agent" \
   --model sonnet \
   --output-format stream-json \
   --verbose \
   "$prompt" > output.jsonl
+
+# Code execution 시나리오 (T6): Bash 필요 시만 확장
+timeout 180 claude -p \
+  --permission-mode dontAsk \
+  --allowedTools "Read Bash Write Edit" \
+  --disallowedTools "WebFetch WebSearch Agent" \
+  --model sonnet \
+  --output-format stream-json \
+  --verbose \
+  "$prompt" > output.jsonl
+
+# 참고: --cwd 플래그는 존재하지 않음. cd "$tmpdir" && claude ... 사용
+# 참고: 구독 기반이므로 --max-budget-usd 불필요
 ```
 
 ### Opus 지적: Goodhart 방지
