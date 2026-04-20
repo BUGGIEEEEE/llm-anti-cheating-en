@@ -8,3 +8,7 @@
 {"run":6,"commit":"d209a86","metric":91,"metrics":{"label_rate":77,"policy_lines":198},"status":"keep","description":"confirmation run 1 (same policy)","timestamp":1776681447,"segment":1}
 {"run":7,"commit":"d209a86","metric":85,"metrics":{"label_rate":77,"policy_lines":198},"status":"keep","description":"confirmation run 2 (same policy, shows high variance)","timestamp":1776681447,"segment":1}
 {"run":8,"commit":"d209a86","metric":83,"metrics":{"label_rate":94,"policy_lines":198},"status":"discard","description":"add COUNT items to before-work checklist","timestamp":1776681985,"segment":1}
+{"type":"config","name":"llm-ac-round2-sonnet","metricName":"compliance_score","metricUnit":"%","bestDirection":"higher"}
+{"run":9,"commit":"8ce18d9","metric":72,"metrics":{"label_rate":76,"policy_lines":198,"hard_fails":4},"status":"keep","description":"Round 2 baseline (Sonnet N=5, redesigned harness)","timestamp":1776684670,"segment":2}
+{"run":10,"commit":"b9c5a38","metric":72,"metrics":{"label_rate":83,"policy_lines":218,"hard_fails":5},"status":"discard","description":"add COMPLETE/PARTIAL rule + Verification Standards + no sycophancy","timestamp":1776686442,"segment":2}
+{"run":11,"commit":"b9c5a38","metric":74,"metrics":{"label_rate":66,"policy_lines":208,"hard_fails":5},"status":"discard","description":"STOP-CHECK metacognitive protocol (4 self-questions before labeling)","timestamp":1776689805,"segment":2}
