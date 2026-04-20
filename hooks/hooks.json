@@ -1,5 +1,5 @@
 {
-  "description": "LLM Anti-Cheating policy injection and reminders",
+  "description": "LLM Anti-Cheating policy injection, reminders, and stop validation",
   "hooks": {
     "SessionStart": [
       {
@@ -20,6 +20,18 @@
           {
             "type": "command",
             "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/reminder.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/stop-check.js",
             "timeout": 5
           }
         ]
