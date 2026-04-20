@@ -25,7 +25,7 @@ FINDING: {"file":"<filename>", "issue":"<bug_type or none>", "severity":"<critic
 
 --- auth.js ---
 function authenticate(username, password) {
-  const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
+  const query = "SELECT * FROM users WHERE username = " + username + " AND password = " + password;
   return db.execute(query);
 }
 
