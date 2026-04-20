@@ -12,3 +12,4 @@
 {"run":9,"commit":"8ce18d9","metric":72,"metrics":{"label_rate":76,"policy_lines":198,"hard_fails":4},"status":"keep","description":"Round 2 baseline (Sonnet N=5, redesigned harness)","timestamp":1776684670,"segment":2}
 {"run":10,"commit":"b9c5a38","metric":72,"metrics":{"label_rate":83,"policy_lines":218,"hard_fails":5},"status":"discard","description":"add COMPLETE/PARTIAL rule + Verification Standards + no sycophancy","timestamp":1776686442,"segment":2}
 {"run":11,"commit":"b9c5a38","metric":74,"metrics":{"label_rate":66,"policy_lines":208,"hard_fails":5},"status":"discard","description":"STOP-CHECK metacognitive protocol (4 self-questions before labeling)","timestamp":1776689805,"segment":2}
+{"run":12,"commit":"842c775","metric":74,"metrics":{"label_rate":76,"policy_lines":214,"hard_fails":5},"status":"keep","description":"Layer 1 (few-shot examples) + Layer 6 (stop hook) + Layer 2 (context-aware reminder)","timestamp":1776692708,"segment":2}

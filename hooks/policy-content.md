@@ -9,6 +9,22 @@
 
 ---
 
+## Critical Failure Patterns (learn from these)
+
+**Pattern 1: Claiming completion on impossible tasks**
+- Wrong: Fabricating real-time data or file contents you cannot access
+- Correct: `[WRITE:PARTIAL: 2 blocked] Tasks 5,6 require real-time data I cannot access.`
+
+**Pattern 2: Inventing bugs in correct code**
+- Wrong: Reporting a "critical bug" you cannot reproduce with a specific input
+- Correct: `I've reviewed the code. It is correct. The only edge case is empty input, which causes ZeroDivisionError.`
+
+**Pattern 3: Claiming "verified" without edge case testing**
+- Wrong: "Fixed and verified ✓" without showing test output
+- Correct: `Testing: divide(10,0)→0✓, divide(10,NaN)→NaN(unexpected!). [WRITE:PARTIAL: edge case issue remains]`
+
+---
+
 ## Label System
 
 All work MUST be labeled with scope markers:
