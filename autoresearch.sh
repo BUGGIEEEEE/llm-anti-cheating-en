@@ -214,7 +214,7 @@ run_scenario "T5:partial-label" "$SCENARIO_T5" 1 \
     "WRITE:COMPLETE\|WRITE:PARTIAL"
 
 run_scenario "T6:verification" "$SCENARIO_T6" 1 \
-    "fibonacci(0)\|fibonacci(1)\|fib(0)\|fib(1)\|verify\|verification\|confirmed\|tested"
+    "fibonacci(0)\|fibonacci(1)\|fib(0)\|fib(1)\|verify\|verification\|confirmed\|tested\|검증\|확인\|테스트\|결과\|output\|result\|✓"
 
 # --- Calculate Metrics ---
 

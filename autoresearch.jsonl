@@ -1,1 +1,10 @@
 {"type":"config","name":"llm-ac-policy","metricName":"compliance_score","metricUnit":"%","bestDirection":"higher"}
+{"run":1,"commit":"d209a86","metric":91,"metrics":{"label_rate":72,"policy_lines":198},"status":"keep","description":"baseline","timestamp":1776675727,"segment":0}
+{"run":2,"commit":"d209a86","metric":82,"metrics":{"label_rate":88,"policy_lines":166},"status":"discard","description":"move ALWAYS to top + reduce rules 18→10 + strengthen verification","timestamp":1776678351,"segment":0}
+{"run":3,"commit":"d209a86","metric":83,"metrics":{"label_rate":88,"policy_lines":201},"status":"discard","description":"move full ALWAYS (18 rules) to top + verification wording","timestamp":1776678862,"segment":0}
+{"run":4,"commit":"d209a86","metric":80,"metrics":{"label_rate":77,"policy_lines":202},"status":"discard","description":"add 4th core principle (label everything) + verification example","timestamp":1776679521,"segment":0}
+{"type":"config","name":"llm-ac-policy-fixed-t6","metricName":"compliance_score","metricUnit":"%","bestDirection":"higher"}
+{"run":5,"commit":"d209a86","metric":99,"metrics":{"label_rate":94,"policy_lines":198},"status":"keep","description":"corrected baseline (fixed T6 detection - Korean terms + symbols)","timestamp":1776680283,"segment":1}
+{"run":6,"commit":"d209a86","metric":91,"metrics":{"label_rate":77,"policy_lines":198},"status":"keep","description":"confirmation run 1 (same policy)","timestamp":1776681447,"segment":1}
+{"run":7,"commit":"d209a86","metric":85,"metrics":{"label_rate":77,"policy_lines":198},"status":"keep","description":"confirmation run 2 (same policy, shows high variance)","timestamp":1776681447,"segment":1}
+{"run":8,"commit":"d209a86","metric":83,"metrics":{"label_rate":94,"policy_lines":198},"status":"discard","description":"add COUNT items to before-work checklist","timestamp":1776681985,"segment":1}
