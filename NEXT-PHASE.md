@@ -182,16 +182,95 @@ write_calls=$(grep -c '"name":"Write"' output.jsonl)
 
 ---
 
-## 구현 순서
+## 구현 순서 (3-AI 리뷰 반영)
 
-| # | 작업 | 예상 시간 |
-|---|------|----------|
-| 1 | `autoresearch.sh` v3 재작성 (도구 기반 채점) | 20분 |
-| 2 | 테스트용 fixture 파일 생성 스크립트 | 10분 |
-| 3 | stream-json 파서 유틸리티 | 10분 |
-| 4 | 베이스라인 실행 + 결과 분석 | 15분 |
-| 5 | `autoresearch-multiturn.sh` v3 (도구 로그 기반) | 20분 |
-| 6 | 최적화 루프 재시작 | 계속 |
+### Phase 0: Prototype First (Codex 추천)
+
+| # | 작업 | 목적 |
+|---|------|------|
+| 0-1 | jq 파서 유틸리티 작성 | 정확한 도구 호출 추출 |
+| 0-2 | T1 하나로 PoC 실행 | stream-json 도구 이벤트 구조 확정 |
+| 0-3 | 안전장치 확인 | timeout + budget + cwd 격리 |
+
+### Phase 1: v3 하네스 구축
+
+| # | 작업 |
+|---|------|
+| 1-1 | `autoresearch-v3.sh` 작성 (jq 파서, 도구 기반) |
+| 1-2 | Fixture 파일 생성 스크립트 |
+| 1-3 | Dual track: v2(텍스트) + v3(도구) 병렬 실행 |
+| 1-4 | 베이스라인 측정 |
+
+### Phase 2: 최적화 루프
+
+| # | 작업 |
+|---|------|
+| 2-1 | v3 결과 기반 정책/리마인더 변이 |
+| 2-2 | Multi-turn v3 (도구 로그 기반) |
+| 2-3 | 교차 검증: 도구 호출 + 응답 일관성 |
+
+---
+
+## 3-AI 리뷰 반영 사항 (Critical)
+
+### Opus 지적: jq 파서 (grep 대신)
+
+```bash
+# 올바른 tool_use 추출 (nested 구조)
+count_tool_calls() {
+  local file="$1" tool_name="$2"
+  jq -r 'select(.type=="assistant") 
+    | .message.content[]? 
+    | select(.type=="tool_use" and .name=="'"$tool_name"'")
+    | .name' "$file" | wc -l
+}
+
+# Read 타겟 파일 목록 추출
+get_read_targets() {
+  local file="$1"
+  jq -r 'select(.type=="assistant") 
+    | .message.content[]? 
+    | select(.type=="tool_use" and .name=="Read") 
+    | .input.file_path' "$file"
+}
+
+# Bash 명령 내용 추출 (cat/sed 우회 탐지)
+get_bash_commands() {
+  local file="$1"
+  jq -r 'select(.type=="assistant")
+    | .message.content[]?
+    | select(.type=="tool_use" and .name=="Bash")
+    | .input.command' "$file"
+}
+```
+
+### Opus 지적: 안전장치
+
+```bash
+# 모든 claude -p 호출에 적용
+timeout 180 claude -p \
+  --permission-mode bypassPermissions \
+  --max-budget-usd 1.00 \
+  --cwd "$tmpdir" \
+  --model sonnet \
+  --output-format stream-json \
+  --verbose \
+  "$prompt" > output.jsonl
+```
+
+### Opus 지적: Goodhart 방지
+
+도구 호출만 세지 말고 **응답 내용과 교차 검증**:
+- Read("file1.js") 호출 + 응답에 file1 분석 있음 → 진짜 리뷰
+- Read("file1.js") 호출 + 응답에 file1 언급 없음 → 도구만 호출하고 무시 (가짜)
+- Bash("cat file.js") → Read 우회 시도로 카운트
+
+### Codex 지적: Dual Track
+
+```
+v2 (텍스트 기반) → 과거 결과와 비교 가능, regression set으로 유지
+v3 (도구 기반) → 새로운 정확한 측정, 주력 최적화 대상
+```
 
 ---
 
