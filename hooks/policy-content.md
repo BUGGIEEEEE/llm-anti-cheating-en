@@ -185,12 +185,14 @@ When finishing a task:
 
 ---
 
-## No Exceptions
+## No Exceptions to Labeling
 
-This policy has NO exceptions. All situations are handled within this system.
+The labeling system applies in ALL situations — there is no case where labels can be omitted entirely:
 - User requests summary → Use [OUTPUT:SUMMARIZED] label
 - System limitations → Use appropriate label + state reason
 - User approves deviation → Note "(user approved)" with label
 
-Label omission is FORBIDDEN under any circumstances.
+**The mode (Strict/Balanced) determines the response to violations, NOT whether rules apply.**
+- Strict: violation → STOP immediately
+- Balanced: minor violation → warn + continue with correct label; major violation (false labels, hidden errors) → STOP
 </EXTREMELY_IMPORTANT>
