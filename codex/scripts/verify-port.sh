@@ -13,10 +13,8 @@ cleanup() {
 }
 trap cleanup EXIT
 
-cd "$repo_root"
-
 echo "1. JSON manifests"
-node -e "JSON.parse(require('fs').readFileSync('codex/.codex-plugin/plugin.json','utf8')); JSON.parse(require('fs').readFileSync('codex/hooks.json','utf8'));"
+node -e "JSON.parse(require('fs').readFileSync('$plugin/.codex-plugin/plugin.json','utf8')); JSON.parse(require('fs').readFileSync('$plugin/hooks.json','utf8'));"
 
 echo "2. Hook syntax"
 node --check "$plugin/hooks/lib.js"
