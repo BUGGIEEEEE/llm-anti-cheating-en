@@ -12,7 +12,7 @@
       "name": "llm-anti-cheating-en",
       "source": "./",
       "description": "Work transparency and anti-cheating policy plugin with scope labels, multi-turn pressure resistance, and override blocking",
-      "version": "1.2.0"
+      "version": "1.3.0"
     }
   ]
 }

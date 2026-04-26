@@ -66,7 +66,6 @@ Create `.claude/llm-anti-cheating.local.md` in your project:
 ```yaml
 ---
 mode: auto       # auto | manual
-level: balanced  # balanced | strict
 ---
 ```
 
@@ -75,15 +74,14 @@ level: balanced  # balanced | strict
 | Option | Values | Description |
 |--------|--------|-------------|
 | mode | `auto` / `manual` | Auto-inject or manual only |
-| level | `balanced` / `strict` | Enforcement strictness |
+
+> **v1.3.0:** The `level` field (strict/balanced) was removed. Enforcement is unified — labels always required, override always blocked, all 16 ALWAYS rules active. Existing `level:` fields in config are silently ignored.
 
 ### Commands
 
 | Command | Description |
 |---------|-------------|
 | `/llm-ac` | Policy reminder |
-| `/llm-ac strict` | Strict mode |
-| `/llm-ac balanced` | Balanced mode |
 | `/llm-ac off` | Disable auto-injection |
 | `/llm-ac on` | Enable auto-injection |
 | `/llm-ac status` | Show current status |

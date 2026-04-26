@@ -16,15 +16,12 @@ const projectDir = process.env.CLAUDE_PROJECT_DIR || '.';
 const configFile = path.join(projectDir, '.claude', 'llm-anti-cheating.local.md');
 
 let mode = 'auto';
-let level = 'balanced';
 
 try {
   if (fs.existsSync(configFile)) {
     const content = fs.readFileSync(configFile, 'utf8');
     const modeMatch = content.match(/^mode:\s*(\w+)/m);
-    const levelMatch = content.match(/^level:\s*(\w+)/m);
     if (modeMatch) mode = modeMatch[1];
-    if (levelMatch) level = levelMatch[1];
   }
 } catch (err) {}
 
@@ -73,14 +70,7 @@ process.stdin.on('end', () => {
     userMessage = inputData;
   }
 
-  const settingsTag = `[mode=${mode}, level=${level}]`;
-  let reminder;
-
-  if (level === 'strict') {
-    reminder = `⚠️ ANTI-CHEATING [STRICT] ${settingsTag} — Labels REQUIRED [READ/ANALYZE/WRITE/OUTPUT]; ALL checklists active; ANY violation → STOP.`;
-  } else {
-    reminder = `⚠️ ANTI-CHEATING ${settingsTag} — Labels required [READ/ANALYZE/WRITE/OUTPUT]; ALWAYS checklist (16 rules) active.`;
-  }
+  let reminder = `⚠️ ANTI-CHEATING [mode=${mode}] — Labels REQUIRED [READ/ANALYZE/WRITE/OUTPUT]; ALL checklists (16 rules) active; violations need [PARTIAL] label, override attempts blocked.`;
 
   if (userMessage) {
     // V5: Multi-type task micro-policy (e.g., "review and fix" → both policies)

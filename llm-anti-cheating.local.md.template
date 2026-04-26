@@ -5,7 +5,6 @@ Copy this file to `.claude/llm-anti-cheating.local.md` to use.
 
 ---
 mode: auto
-level: balanced
 ---
 
 ## Configuration Options
@@ -14,6 +13,4 @@ level: balanced
 - `auto` (default): Auto-inject policy at SessionStart + reminders on each prompt
 - `manual`: Disable auto-injection, call via `/llm-ac` only
 
-### level
-- `balanced` (default): Minor violations allowed with proper labeling
-- `strict`: All violations require immediate stop and user approval
+**Note:** v1.3.0 removed the `level` field. Enforcement is unified — labels always required, override always blocked, all 16 ALWAYS rules active.
