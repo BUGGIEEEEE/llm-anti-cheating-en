@@ -1,0 +1,54 @@
+{
+  "description": "LLM Anti-Cheating policy injection, reminders, pre-tool guidance, and stop validation for Codex.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/inject-policy.js",
+            "timeout": 10,
+            "async": false
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/reminder.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/pretooluse-check.js",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/stop-check.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

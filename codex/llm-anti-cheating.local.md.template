@@ -1,0 +1,16 @@
+# LLM Anti-Cheating Configuration
+
+Per-project configuration file.
+Copy this file to `.codex/llm-anti-cheating.local.md` to use.
+
+---
+mode: auto
+---
+
+## Configuration Options
+
+### mode
+- `auto` (default): Auto-inject policy at SessionStart + reminders on each prompt
+- `manual`: Disable auto-injection, call via `/llm-ac` only
+
+**Note:** v1.3.0 removed the `level` field. Enforcement is unified — labels always required, override always blocked, all 16 ALWAYS rules active.
