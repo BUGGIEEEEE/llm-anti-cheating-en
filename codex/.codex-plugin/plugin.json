@@ -1,0 +1,43 @@
+{
+  "name": "llm-anti-cheating",
+  "version": "1.3.0-codex.2",
+  "description": "Codex port of the Claude Work Transparency Policy - Enforces scope labeling, multi-turn pressure resistance, and override blocking.",
+  "author": {
+    "name": "buggie",
+    "url": "https://github.com/BUGGIEEEEE"
+  },
+  "homepage": "https://github.com/BUGGIEEEEE/llm-anti-cheating-en",
+  "repository": "https://github.com/BUGGIEEEEE/llm-anti-cheating-en",
+  "license": "MIT",
+  "keywords": [
+    "transparency",
+    "anti-cheating",
+    "policy",
+    "labeling",
+    "verification"
+  ],
+  "skills": "./skills/",
+  "hooks": "./hooks.json",
+  "interface": {
+    "displayName": "LLM Anti-Cheating",
+    "shortDescription": "Work transparency guardrails for Codex",
+    "longDescription": "Codex port of BUGGIEEEEE/llm-anti-cheating-en v1.3.0. Adds a Codex skill and hook-based reminders that require explicit work labels, honest verification reporting, read-before-edit checks, multi-turn pressure resistance, and stop-time response validation.",
+    "developerName": "buggie",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/BUGGIEEEEE/llm-anti-cheating-en",
+    "privacyPolicyURL": "https://github.com/BUGGIEEEEE/llm-anti-cheating-en",
+    "termsOfServiceURL": "https://github.com/BUGGIEEEEE/llm-anti-cheating-en/blob/main/LICENSE",
+    "defaultPrompt": [
+      "Show the LLM anti-cheating policy",
+      "Check anti-cheating status",
+      "Enable work transparency labels"
+    ],
+    "brandColor": "#2563EB",
+    "screenshots": []
+  }
+}

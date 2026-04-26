@@ -1,0 +1,8 @@
+interface:
+  display_name: "LLM Anti-Cheating"
+  short_description: "Work transparency labels and checks"
+  brand_color: "#2563EB"
+  default_prompt: "Use $llm-ac to show the current work transparency policy."
+
+policy:
+  allow_implicit_invocation: true

@@ -26,7 +26,7 @@ Across Haiku / Sonnet / Opus, N=10 measurements:
 
 The biggest gains are in adversarial multi-turn scenarios (override attempts, guess pressure, gradual quality decline).
 
-## Installation
+## Claude Code Installation
 
 **Step 1: Add marketplace**
 ```
@@ -45,6 +45,38 @@ Or manually:
 ```bash
 git clone https://github.com/BUGGIEEEEE/llm-anti-cheating-en.git ~/.claude/plugins/llm-anti-cheating-en
 ```
+
+## Codex Installation
+
+This repository also includes a Codex port under `codex/`. The Codex port preserves the upstream v1.3.0 policy text and ports the hooks to Codex plugin paths and configuration.
+
+```bash
+git clone https://github.com/BUGGIEEEEE/llm-anti-cheating-en.git
+cd llm-anti-cheating-en
+./codex/scripts/install-local.sh
+```
+
+Then restart Codex or reload plugins.
+
+To verify the Codex port files and hook smoke tests:
+
+```bash
+./codex/scripts/verify-port.sh
+```
+
+Codex configuration uses:
+
+```text
+.codex/llm-anti-cheating.local.md
+```
+
+Claude configuration remains:
+
+```text
+.claude/llm-anti-cheating.local.md
+```
+
+See `docs/codex-port-completeness.md` for the exact porting status. File-level parity is verified against v1.3.0, but full behavioral equivalence still requires real Codex runtime E2E validation.
 
 ## Prerequisites
 
@@ -132,6 +164,13 @@ mode: auto       # auto | manual
 llm-anti-cheating-en/
 ├── .claude-plugin/
 │   └── plugin.json
+├── codex/
+│   ├── .codex-plugin/
+│   │   └── plugin.json
+│   ├── hooks.json
+│   ├── hooks/
+│   ├── skills/
+│   └── scripts/
 ├── hooks/
 │   ├── hooks.json
 │   ├── inject-policy.js
