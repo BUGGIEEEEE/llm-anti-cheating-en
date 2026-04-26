@@ -2,15 +2,29 @@
 
 Claude work transparency and anti-cheating policy plugin.
 
-Enforces scope labels and checklists to prevent rationalization, omission, and cheating behaviors.
+Enforces scope labels and checklists to prevent rationalization, omission, and cheating behaviors. **Multi-turn pressure resistance** prevents users from disabling the policy mid-conversation.
 
 ## Features
 
 - **Transparency**: All work labeled with `[READ:*]`, `[ANALYZE:*]`, `[WRITE:*]`, `[OUTPUT:*]`
 - **Anti-Cheating**: 16 "ALWAYS" rules preventing common cheating patterns
 - **Checklists**: Before/During/After work verification
-- **Reminders**: Policy reminder on every user prompt
+- **Reminders**: Context-aware reminders on every user prompt (pressure, override, guess pressure, false premise, bulk work)
+- **Override Resistance**: Blocks attempts to disable the policy via "stop using labels" or similar
 - **Modes**: Strict or Balanced enforcement
+
+## Measured Effect (v1.2.0)
+
+Across Haiku / Sonnet / Opus, N=10 measurements:
+
+| Test | No-Plugin | With Plugin |
+|------|-----------|-------------|
+| Multi-turn compliance | 72-83% | **87-90%** |
+| MT3 override resistance | 46-93% | **100%** all models |
+| Long-form (5-10 turn) | — | **97%** strict scoring |
+| Label adherence | ~25% | **92-100%** |
+
+The biggest gains are in adversarial multi-turn scenarios (override attempts, guess pressure, gradual quality decline).
 
 ## Installation
 

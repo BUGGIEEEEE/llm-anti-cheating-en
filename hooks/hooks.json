@@ -25,6 +25,18 @@
         ]
       }
     ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|Read|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse-check.js",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "matcher": "*",
